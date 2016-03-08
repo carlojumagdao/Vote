@@ -4,7 +4,7 @@
 		<title>Vote+ Nav</title>
 		  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-          <link rel="stylesheet" href="../assets/css/materialize.min.css" edia="screen,projection">
+          <link rel="stylesheet" href="../assets/css/materialize.min.css" media="screen,projection">
           <link rel="stylesheet" href="../assets/css/style.css">
 	</head>
 	<body>
@@ -119,16 +119,16 @@
 								<div class="collapsible-body" style="">
 									<ul>
 										<li>
-											<a href="#" >&emsp;Passcode Page</a>
+											<a href="passcodeform.php" >&emsp;Passcode Page</a>
 										</li>                                         
 										<li>
-											<a href="#">&emsp;Voting Page</a>
+											<a href="votinguser.php">&emsp;Voting Page</a>
 										</li> 
 										<li>
-											<a href="#">&emsp;Campaign Page</a>
+											<a href="securityform.php">&emsp;Security Page</a>
 										</li>
 										<li>
-											<a href="#">&emsp;Survey Page</a>
+											<a href="#">&emsp;Campaign Page</a>
 										</li>
 									</ul>
 								</div>
