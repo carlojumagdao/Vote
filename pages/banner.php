@@ -28,7 +28,7 @@
                          </li>
                          <li>
                               <a class="black-text waves-effect waves-yellow" href="sass.html">
-                              <i class="material-icons left mdi-action-view-quilt black-text text-accent-4"></i>Dashboard
+                              <i class="material-icons left mdi-action-view-quilt black-text text-accent-4"></i>Account
                               </a>
                          </li>
                     </ul>     
