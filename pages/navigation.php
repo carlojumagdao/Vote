@@ -81,17 +81,14 @@
 					</li>
 					<li class="no-padding">
 						<ul class="collapsible" data-collapsible="accordion">
-							<li ><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-editor-mode-edit"></i> Survey<i class="material-icons right mdi-navigation-arrow-drop-down"></i></a>
+							<li ><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-editor-mode-edit"></i> Users<i class="material-icons right mdi-navigation-arrow-drop-down"></i></a>
 								<div class="collapsible-body" style="">
 									<ul>
 										<li>
-											<a href="#" >&emsp;All Surveys</a>
+											<a href="user.php" >&emsp;All Users</a>
 										</li>                                         
 										<li>
-											<a href="#">&emsp;Add new</a>
-										</li>
-										<li>
-											<a href="#">&emsp;Survey Form</a>
+											<a href="usersinfo.php">&emsp;Add new</a>
 										</li>
 									</ul>
 								</div>
@@ -128,7 +125,11 @@
 											<a href="securityform.php">&emsp;Security Page</a>
 										</li>
 										<li>
+<<<<<<< HEAD
 											<a href="#">&emsp;Campaign Page</a>
+=======
+											<a href="#">&emsp;Users Page</a>
+>>>>>>> origin/master
 										</li>
 									</ul>
 								</div>
