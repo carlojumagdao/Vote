@@ -177,7 +177,7 @@ class formLoader {
 		$html = '<div class="input-field">';
 		$html .= $this->make_label($id, $field->title, $required);
 	    if($id == "member_id"){
-	    	$html .= sprintf('<input type="text" name="%s" id="%s" class="validate %s" value="%s">', $id, $id, $required,$this->strMemCode);
+	    	$html .= sprintf('<input type="text" name="%s" id="%s" class="validate %s" value="%s" readonly>', $id, $id, $required,$this->strMemCode);
 	    } else if($id == "first_name"){
 	    	$html .= sprintf('<input type="text" name="%s" id="%s" class="validate %s" value="%s">', $id, $id, $required,$this->strMemFname);
 	    } else if($id == "middle_name"){
@@ -349,7 +349,7 @@ class formLoader {
 
 		$html = '<div class="input-field">';
 		$html .= $this->make_label($id, $field->title, $required);
-	    $html .= sprintf('<select  name="%s" id="%s" class="form-control %s">', $id, $id, $required);
+	    $html .= sprintf('<select name="%s" id="%s" class="form-control %s">', $id, $id, $required);
 	    $html .= "<option selected='true' disabled='disabled'>-Select-</option>";
 
 	    // Render choices
@@ -367,7 +367,6 @@ class formLoader {
 	    }
 
 	  	$html .= '</select></div>';
-	  	//echo "$id<br/>";
 	  	return $html;
 	  	echo "$html";
 	}

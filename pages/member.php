@@ -10,7 +10,7 @@
     $qrDynFields = $conn -> query("SELECT strDynFieldName FROM tblDynamicField WHERE blDynStatus = 1 ORDER BY strDynFieldName");
     $qrDynFieldsRows = $qrDynFields -> fetchAll();
 
-    $qrMember = $conn -> query("SELECT strMemberId, strMemFname, strMemMname, strMemLname, strMemEmail FROM tblMember");
+    $qrMember = $conn -> query("SELECT strMemberId, strMemFname, strMemMname, strMemLname, strMemEmail FROM tblMember WHERE blDelete = 0");
     $qrMemberRows = $qrMember -> fetchAll();
     require 'member.tmpl.php';
 ?>

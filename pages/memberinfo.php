@@ -14,7 +14,7 @@
 
 	//Getting the latest code of member and pass it to form loader
 	$strCode = " ";
-	$strLatestMemResult = $conn -> query(" SELECT strMemberId FROM tblMember");
+	$strLatestMemResult = $conn -> query(" SELECT strMemberId FROM tblMember ORDER BY strMemberId");
 	$strLatestMemData = $strLatestMemResult -> fetchAll();
 	foreach ($strLatestMemData as $strLatestMemCode) {
 		$strCode = $strLatestMemCode['strMemberId'];

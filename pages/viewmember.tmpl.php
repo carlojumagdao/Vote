@@ -1,11 +1,3 @@
-<?php
-
-if(!isset($strMemFname)){
-    ?><script>self.location.replace("error404.php");</script>><?php
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,6 +36,15 @@ if(!isset($strMemFname)){
 						<div class="panel-heading" >
 							Member Profile
 						</div>
+						<div class="col s12">
+							<?php if(isset($strMessage)){ ?>
+							<div class="card-panel white">
+								<span style="font-weight: bold" class="<?=$strClassName?>">
+									<?=$strMessage?>
+								</span>
+							</div>
+							<?php } ?>
+						</div>
 						<div class="panel-body">
 							<div class="row">
 								<div>
@@ -60,26 +61,26 @@ if(!isset($strMemFname)){
 						<div class="panel-body">
 							<div class="row">
 						        <div class="col s12">
+						        	<label>Passcode</label>	
+						        	<h2> <?=$strMemPasscode?> </h2>
+						        </div>
+						    </div>
+							<div class="row">
+						        <div class="col s12">
 						        	<label>Security Question</label>	
-						        	<input type="text" value="<?=$strQuestDesc?>" disabled>
+						        	<p><?=$strQuestDesc?> </p>
 						        </div>
 						    </div>
 						    <div class="row">
 						        <div class="col s12">
 						        	<label for="end-date">Security Question Answer</label>
-						        	<input id="end-date" type="text" value="<?=$strMemSecAnswer?>" disabled>
-						        </div>
-						    </div>
-						    <div class="row">
-						        <div class="col s12">
-						        	<label for="end-date">Passcode</label>
-						        	<input id="end-date" type="text" value="<?=$strMemPasscode?>" disabled>
+						        	<p><?=$strMemSecAnswer?> </p>
 						        </div>
 						    </div>
 						    <div class="row">
 						        <div class="col s12">
 						        	<label for="end-date">Date Voted</label>
-						        	<input id="end-date" type="text" value="<?=$datMemVoted?>" disabled>
+						        	<p><?=$datMemVoted?> </p>
 						        </div>
 						    </div>
 						</div>
@@ -134,8 +135,13 @@ if(!isset($strMemFname)){
 			</div>
 			</div>
 		</div>
+		<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+        	<a href="member.php"class="btn-floating tooltipped btn-large yellow darken-2" data-position="left" data-tooltip="Add New">
+            	<i class="mdi-social-person-add "></i>
+        	</a>
+    	</div>
 	</div>
 </div>
-<script src="../assets/js/materialize.min.js"></script> 
+<!-- <script src="../assets/js/materialize.min.js"></script>  -->
 </body>
 </html>

@@ -262,7 +262,7 @@ class formLoader {
 			$checked = $field->choices[$i]->checked ? "checked" : '';
 
 			$html .= '<p>';
-			$html .= sprintf('<input type="radio" name="%s" id="%s_%d" value="%s" %s>', $id, $id, $i, $field->choices[$i]->value, $checked);
+			$html .= sprintf('<input type="radio" name="%s" id="%s_%d" value="%s">', $id, $id, $i, $field->choices[$i]->value);
 			$html .= sprintf('<label for= "%s_%d">%s</label>',$id, $i, $field->choices[$i]->value);
 			$html .= '</p>';
 		}
@@ -287,15 +287,15 @@ class formLoader {
 		$html = '<div class="input-field">';
 		$html .= $this->make_label($id, $field->title, $required);
 	    $html .= sprintf('<select  name="%s" id="%s" class="form-control %s">', $id, $id, $required);
+	    $html .= "<option selected='true' disabled='disabled'>-Select-</option>";
 
 	    // Render choices
 	    foreach ($field->choices as $choice) {
 	    	$checked = $choice->checked ? "selected" : '';
-	    	$html .= sprintf('<option value="%s" %s>%s</option>', $choice->value, $checked, $choice->title);
+	    	$html .= sprintf('<option value="%s">%s</option>', $choice->value, $choice->title);
 	    }
 
 	  	$html .= '</select></div>';
-	  	//echo "$id<br/>";
 	  	return $html;
 	  	echo "$html";
 	}

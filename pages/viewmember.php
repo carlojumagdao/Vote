@@ -1,16 +1,17 @@
 <?php
 
-require 'navigation.php';
-require 'banner.php';
+// require 'navigation.php';
+// require 'banner.php';
 require 'connection.php';
 require '../loaders/php/editformLoader.php';
+
 
 $arrFieldName= array (' ');
 $arrFieldData= array (' ');
 
-if(isset($_GET['id'])){
+if(isset($_POST['id'])){
 
-	$strMemCode = $_GET['id'];
+	$strMemCode = $_POST['id'];
 	
 	$stmt = $conn -> prepare('SELECT * FROM tblMember WHERE strMemberId = :MemCode');
     $stmt->bindParam(':MemCode', $strMemCode, PDO::PARAM_STR);
@@ -87,10 +88,8 @@ if(isset($_GET['id'])){
 	foreach ($formData as $form) {
 		$data = $form['strMemForm'];
 	}
-	$loader = new formLoader($data,'submit.php',$strMemCode,$strMemFname,$strMemMname,$strMemLname,$strMemEmail,$arrFieldName,$arrFieldData);
+	$loader = new formLoader($data,'editmember.php',$strMemCode,$strMemFname,$strMemMname,$strMemLname,$strMemEmail,$arrFieldName,$arrFieldData);
 	//yung submit.php ay yung action sa form
+    require 'viewmember.tmpl.php';
 }
-
-require 'viewmember.tmpl.php';
-
 ?>
