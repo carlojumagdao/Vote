@@ -11,7 +11,23 @@
         margin-bottom: 2%;
     }
     .collection a.collection-item:not(.active):hover {
+        /*background-color: #f5c012;*/
+    }
+    .collection a.collection-item.failed:hover {
         background-color: #f5c012;
+    }
+    .collection .collection-item.active {
+        background-color: #f5c012;
+        border: 1px solid #f5c012;
+    }
+    .collection .collection-item.failed {
+        background-color: transparent;
+        border: 1px solid #f5c012;
+        border-radius: 20px;
+    }
+    .collection{
+        border-radius: 20px;
+        border: 0px solid #e0e0e0; 
     }
 </style>
 <body>   
@@ -19,11 +35,21 @@
 <div id="content"> 
     <div id="page-wrapper">
         <div class="container-fluid">
+            <form method="POST" action="addcandidate.php" enctype="multipart/form-data">
             <div class="row">
                 <div class="col s12">
                     <h3 class="page-header">
                         New Candidate
                     </h3>
+                </div>
+                <div class="col s12">
+                    <?php if(isset($strMessage)){ ?>
+                    <div class="card-panel white">
+                        <span style="font-weight: bold" class="<?=$strClassName?>">
+                            <?=$strMessage?>
+                        </span>
+                    </div>
+                    <?php } ?>
                 </div>
                 <div class="col s12">
                     <div class="panel panel-default">
@@ -38,12 +64,12 @@
                                     </div>
                                 </div>
                                 <div class="input-field col s8">
-                                    <input id="first_name" type="text" class="validate" value="<?=$strIncrementedCode?>">
-                                    <label for="first_name">Candidate ID</label>
+                                    <input id="cand-id" type="text" class="validate" value="<?=$strIncrementedCode?>" name="cand-id">
+                                    <label for="cand-id">Candidate ID</label>
                                 </div>
                                 <div class="col s8">
                                     <label>Position Name:</label>
-                                    <select class="browser-default" onchange="dispPos(this)">
+                                    <select name="pos-code" class="browser-default" onchange="dispPos(this)">
                                     <option value="" disabled selected>-Select-</option>
                                         <?php
                                             foreach($qrPosRows as $qrPosRow){
@@ -56,7 +82,7 @@
                                 </div>
                                 <div class="col s8">
                                     <label>Member Name:</label>
-                                    <select class="browser-default" onchange="dispMem(this)">
+                                    <select name="mem-code" class="browser-default" onchange="dispMem(this)">
                                         <option value="" disabled selected>-Select-</option>
                                         <?php
                                             foreach($qrMemberRows as $qrMemberRow){
@@ -66,6 +92,7 @@
                                             }
                                         ?>
                                     </select>
+                                    <button type="button" class="col s12 btn btn-primary validate  blue darken-2 valcand">Validate</button>
                                 </div>
                             </div>
                             <div class="row">
@@ -73,7 +100,7 @@
                                     <div class="file-field input-field">
                                         <div class="btn waves-effect waves-black tooltipped yellow darken-2 grey-text text-darken-4 " data-position="top" data-delay="50" data-tooltip="choose file">
                                             <span>File</span>
-                                            <input type="file" onchange="readURL(this);">
+                                            <input name = "pic" type="file" onchange="readURL(this);">
                                         </div>
                                         <div class="file-path-wrapper">
                                             <input class="file-path validate yellow-text text-darken-2" type="text">
@@ -84,35 +111,11 @@
                         </div>  
                     </div>
                 </div>
-                <div class="col s6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" >
-                            Position Reference
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col s12">
-                                    <div id="pos-content"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" >
-                            Member Detail
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col s12">
-                                    <div id="mem-content"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col s12">
+                    <div id="edit-content"></div>
                 </div>
             </div>
+            </form>
         </div>
     </div>
 </div>
@@ -139,24 +142,31 @@
 </script>
 <script> 
 
-    var memid;
-    var posid;
+    var memid = "undefine";
+    var posid = "undefine";
 
     function dispMem(select) {
+        document.getElementById("edit-content").style.display = 'none';
         memid = select.value;
-        $.post('candmemposdet.php',{'memberid':memid},function(data){
-            $("#mem-content").html(data);
-        });
         return false;
     }
 
     function dispPos(select) {
+        document.getElementById("edit-content").style.display = 'none';
         posid = select.value;
-        $.post('candmemposdet.php',{'posid':posid},function(data){
-            $("#pos-content").html(data);
-        });
         return false;
     }
+    $('.valcand').on('click', function() {
+        document.getElementById("edit-content").style.display = 'block';
+        if(memid == "undefine" || posid == "undefine"){
+            alert("nothing to validate");
+        } else {
+            $.post('candmemposdet.php',{'memberid':memid,'posid':posid},function(data){
+                $("#edit-content").html(data);
+            });
+            return false;
+        }
+    });
 </script>
 </body>
 </html>

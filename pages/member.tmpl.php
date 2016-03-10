@@ -43,15 +43,6 @@
                             <div class="row">
                                 <div class="col s12">
                                     <div id="data-table-simple_wrapper" class="dataTables_wrapper">
-                                    <!-- <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-                                        <a href="readform.php" class="btn-floating tooltipped btn-large yellow accent-4" data-position="left" data-delay="50" data-tooltip="Add member">
-                                        <i class="large mdi-content-add"></i>
-                                        </a>
-                                        <ul>
-                                            <li><a class="btn-floating tooltipped red" data-position="left" data-delay="50" data-tooltip="Edit"><i class="mdi-editor-mode-edit" ></i></a></li>
-                                            <li><a class="btn-floating tooltipped  yellow darken-1" data-position="left" data-delay="50" data-tooltip="Delete"><i class="mdi-action-delete"></i></a></li>
-                                        </ul>
-                                    </div> -->
                                     </div>
                                     <table id="data-table-simple" class="member-table" cellspacing="0" role="grid" aria-describedby="data-table-simple_info">
                                         <thead>
