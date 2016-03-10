@@ -38,7 +38,7 @@
                                     <table id="data-table-simple" class="member-table" cellspacing="0" role="grid" aria-describedby="data-table-simple_info">
                                         <thead>
                                             <tr>
-                                                <td>User ID</td>
+                                                <td>#</td>
                                                 <td>First Name</td>
                                                 <td>Last Name</td>
                                                 <td>Username</td>
@@ -49,7 +49,7 @@
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <td>User ID</td>
+                                                <td>#</td>
                                                 <td>First Name</td>
                                                 <td>Last Name</td>
                                                 <td>Username</td>
@@ -93,7 +93,7 @@
             </div>
         </div>
         <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-            <a href="memberinfo.php"class="btn-floating tooltipped btn-large yellow darken-2" data-position="left" data-tooltip="Add New">
+            <a href="adduser.php"class="btn-floating tooltipped btn-large yellow darken-2" data-position="left" data-tooltip="Add New">
                 <i class="large mdi-content-add"></i>
             </a>
         </div>

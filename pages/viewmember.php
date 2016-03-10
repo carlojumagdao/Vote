@@ -90,6 +90,6 @@ if(isset($_POST['id'])){
 	}
 	$loader = new formLoader($data,'editmember.php',$strMemCode,$strMemFname,$strMemMname,$strMemLname,$strMemEmail,$arrFieldName,$arrFieldData);
 	//yung submit.php ay yung action sa form
-    require 'viewmember.tmpl.php';
 }
+    require 'viewmember.tmpl.php';
 ?>

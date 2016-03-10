@@ -21,10 +21,6 @@ class formLoader {
 	var $strMemMname;
 	var $strMemLname;
 	var $strMemEmail;
-	var $intMemSecId;
-	var $strMemSecAnswer;
-	var $strMemPasscode;
-	var $datMemVoted;
 	var $arrFieldName= array (' ');
 	var $arrFieldData= array (' ');
 	/**

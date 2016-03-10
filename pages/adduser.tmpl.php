@@ -1,44 +1,3 @@
-<?php
-	require 'banner.php';
-	require 'navigation.php';
-	require 'connection.php';
-	require '../loaders/php/formLoader.php';
-
-	$formResult = $conn -> query("SELECT * FROM tblUser");
-	$formData = $formResult -> fetchAll();
-
-	$strSchedResult = $conn -> query(" SELECT * FROM tblSchedule");
-	$strSchedRows = $strSchedResult -> fetchAll();
-	foreach ($strSchedRows as $strSchedRow) {
-		$strElecStart = $strSchedRow['datSchedStart'];
-		$strElecEnd = $strSchedRow['datSchedEnd'];
-	}
-
-	$strLatElecResult = $conn -> query(" SELECT * FROM tblElection");
-	$strLatElecRows = $strLatElecResult -> fetchAll();
-	foreach ($strLatElecRows as $strLatElecRow) {
-		$strElecTitle = $strLatElecRow['strElecTitle'];
-		$strElecDesc = $strLatElecRow['strElecDesc'];
-		$strElecStatus = $strLatElecRow['blElecStatus'];
-	}
-
-?>
-
-<script>
-       function fnValidate(obj, pass, strdivname){
-           var confirm = obj.value;
-           var password = document.getElementById(pass).value;
-
-            if((password == "") || (password != confirm)){
-            	//alert('Password do not match.');
-                //password.label= "data-error";
-                alertpassword.attr('data-error','hue');
-                //document.getElementById(strdivname). = "invalid";
-            } else{
-            	alert('Password matched.');
-            }
-        }
-</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,6 +30,15 @@
 					<h3 class="page-header">
 						New User
 					</h3>
+				</div>
+				<div class="col s12">
+					<?php if(isset($strMessage)){ ?>
+					<div class="card-panel white">
+						<span style="font-weight: bold" class="<?=$strClassName?>">
+							<?=$strMessage?>
+						</span>
+					</div>
+					<?php } ?>
 				</div>
 				<div class="col s8">
 					<div class="panel panel-default">
@@ -171,37 +139,20 @@
 <script src="../assets/js/jquery/dist/jquery.js"></script>
 <script src="../assets/js/jquery/jquery-ui.min.js"></script>
 <script src="../assets/js/materialize.min.js"></script> 
+<script>
+   function fnValidate(obj, pass, strdivname){
+       var confirm = obj.value;
+       var password = document.getElementById(pass).value;
+
+        if((password == "") || (password != confirm)){
+        	//alert('Password do not match.');
+            //password.label= "data-error";
+            alertpassword.attr('data-error','hue');
+            //document.getElementById(strdivname). = "invalid";
+        } else{
+        	// alert('Password matched.');
+        }
+    }
+</script>
 </body>
 </html>
-
-<?php
-	if (isset($_POST['btnSubmit']))
-	{
-		if(empty($_POST['user_fname']) || empty($_POST['user_lname']) || empty($_POST['user_email']) || empty($_POST['user_uname']) || empty($_POST['user_password'])){
-			 echo"<script> alert ('Fill up all the details') </script>";
-		} else{
-			if (($_POST['user_password']) != ($_POST['user_confirm'])){
-			 	echo"<script> alert ('Password do not match.') </script>";
-			}
-			else{
-					$strUserFName= $_POST['user_fname'];
-					$strUserLName= $_POST['user_lname'];
-					$strUserName= $_POST['user_uname'];
-					$strUserEmail= $_POST['user_email'];
-					$strUserPassword = $_POST['user_password'];
-					$strAccType= $_POST['account_type'];
-					$stmt1 = $conn -> prepare("INSERT INTO tblUser(strUserFname,strUserLname,strUsername
-																	,strUserEmail,strPassword,strAccountType) 
-													VALUES(:userFname,:userLname,:userUname,:userEmail,:userPassword,:userAccount)");
-					$stmt1->bindParam(':userFname',$strUserFName,PDO::PARAM_STR);
-					$stmt1->bindParam(':userLname',$strUserLName,PDO::PARAM_STR);
-					$stmt1->bindParam(':userUname',$strUserName,PDO::PARAM_STR);
-					$stmt1->bindParam(':userEmail',$strUserEmail,PDO::PARAM_STR);
-					$stmt1->bindParam(':userPassword',$strUserPassword,PDO::PARAM_STR);
-					$stmt1->bindParam(':userAccount',$strAccType,PDO::PARAM_STR);
-					$stmt1->execute();
-				}
-			}
-	
-	}
-?>

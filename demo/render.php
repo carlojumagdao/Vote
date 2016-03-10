@@ -71,7 +71,7 @@ if(isset($strError)){
 	$file = fopen('../pages/src/json/example.json', 'w+');
 	fwrite($file, $form_data);
 	fclose($file);
-	header("location:../pages/memberinfo.php");
+	header("location:../pages/addmember.php");
 }
 
 // header("location:../pages/memberinfo.php");

@@ -37,7 +37,7 @@
 											<a href="member.php">&emsp; All Members</a>
 										</li>
 										<li>
-											<a href="memberinfo.php">&emsp; Add New</a>
+											<a href="addmember.php">&emsp; Add New</a>
 										</li>
 										<li>
 											<a href="memberform.php" >&emsp; Member Form</a>
@@ -53,10 +53,10 @@
 								<div class="collapsible-body" style="">
 									<ul>
 										<li>
-											<a href="#" >&emsp;All Positions</a>
+											<a href="position.php" >&emsp;All Positions</a>
 										</li>                                         
 										<li>
-											<a href="#">&emsp;Add new</a>
+											<a href="addposition.php">&emsp;Add new</a>
 										</li>
 									</ul>
 								</div>
@@ -69,10 +69,10 @@
 								<div class="collapsible-body" style="">
 									<ul>
 										<li>
-											<a href="#" >&emsp;All Candidates</a>
+											<a href="candidate.php" >&emsp;All Candidates</a>
 										</li>                                         
 										<li>
-											<a href="#">&emsp;Add new</a>
+											<a href="addcandidate.php">&emsp;Add new</a>
 										</li>
 									</ul>
 								</div>
@@ -88,7 +88,7 @@
 											<a href="user.php" >&emsp;All Users</a>
 										</li>                                         
 										<li>
-											<a href="usersinfo.php">&emsp;Add new</a>
+											<a href="adduser.php">&emsp;Add new</a>
 										</li>
 									</ul>
 								</div>
@@ -125,11 +125,8 @@
 											<a href="securityform.php">&emsp;Security Page</a>
 										</li>
 										<li>
-<<<<<<< HEAD
 											<a href="#">&emsp;Campaign Page</a>
-=======
 											<a href="#">&emsp;Users Page</a>
->>>>>>> origin/master
 										</li>
 									</ul>
 								</div>

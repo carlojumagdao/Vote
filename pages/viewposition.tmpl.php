@@ -1,46 +1,7 @@
-<?php
-	require 'banner.php';
-	require 'navigation.php';
-	require 'connection.php';
-	require '../loaders/php/formLoader.php';
-
-	$formResult = $conn -> query("SELECT * FROM tblMemberForm");
-	$formData = $formResult -> fetchAll();
-
-	foreach ($formData as $form) {
-		$data = $form['strMemForm'];
-	}
-	$loader = new formLoader($data, '../demo/submit.php');
-
-	//Getting the latest code of member and pass it to form loader
-	$strCode = " ";
-	$strLatestMemResult = $conn -> query(" SELECT strMemberId FROM tblMember ORDER BY strMemberId");
-	$strLatestMemData = $strLatestMemResult -> fetchAll();
-	foreach ($strLatestMemData as $strLatestMemCode) {
-		$strCode = $strLatestMemCode['strMemberId'];
-	}
-
-	$strSchedResult = $conn -> query(" SELECT * FROM tblSchedule");
-	$strSchedRows = $strSchedResult -> fetchAll();
-	foreach ($strSchedRows as $strSchedRow) {
-		$strElecStart = $strSchedRow['datSchedStart'];
-		$strElecEnd = $strSchedRow['datSchedEnd'];
-	}
-
-	$strLatElecResult = $conn -> query(" SELECT * FROM tblElection");
-	$strLatElecRows = $strLatElecResult -> fetchAll();
-	foreach ($strLatElecRows as $strLatElecRow) {
-		$strElecTitle = $strLatElecRow['strElecTitle'];
-		$strElecDesc = $strLatElecRow['strElecDesc'];
-		$strElecStatus = $strLatElecRow['blElecStatus'];
-	}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Vote+ Add Member</title>
+	<title>Vote+ Edit Position</title>
 	<style>
 		select {
 			visibility: visible;
@@ -67,23 +28,60 @@
 			<div class="row">
 				<div class="col s12">
 					<h3 class="page-header">
-						New Member
+						Edit Position
 					</h3>
 				</div>
+				<div class="col s12">
+					<?php if(isset($strMessage)){ ?>
+					<div class="card-panel white">
+						<span style="font-weight: bold" class="<?=$strClassName?>">
+							<?=$strMessage?>
+						</span>
+					</div>
+					<?php } ?>
+				</div>
+				<form action="editposition.php" method="POST">
 				<div class="col s8">
 					<div class="panel panel-default">
 						<div class="panel-heading" >
-							Member Profile
+							Position Details
 						</div>
 						<div class="panel-body">
 							<div class="row">
-								<div>
-								<?php $loader->render_form($strCode); ?>
+								<!-- <div> -->
+								
+								<div class="input-field col s12">
+						        	<label for="pos-id">Position ID<span style="color: red">*</span></label>
+						        	<input type="text" class="validate" name = "pos-id" value="<?=$strPosCode?>"/>
+						        </div>
+						        <div class="input-field col s12">
+						        	<label for="pos-name">Position Name<span style="color: red">*</span></label>
+						        	<input type="text" class="validate" name = "pos-name" value = "<?=$strPosName?>" />
+						        </div>
+						        <div class="input-field col s12">
+						        	<label for="pos-limit">Vote Limit<span style="color: red">*</span></label>
+						        	<input type="number" class="validate" name = "pos-limit" value="<?=$intVoteLimit?>" />
+						        </div>
+						        <input type="submit" class="btn btn-primary" name = "btnEditPosition" />
 							</div>
 						</div>	
 					</div>
 				</div>
 				<div class="col s4">
+					<div class="panel panel-default">
+						<div class="panel-heading" >
+							Position Reference
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<?php $formloader->render_form(); ?>
+								
+							</div>
+						</div>	
+					</div>
+				</div>
+				</form>
+				<div class="col s6">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							Current Election 
@@ -93,7 +91,6 @@
 						        <div class="input-field col s12">
 						        	<label for="elec-title">Election Title</label>
 						        	<input value="<?=$strElecTitle?>" id="elec-title" type="text" class="validate" name = "elec-title" />
-						        	
 						        </div>
 					      	</div>
 					      	<div class="row">
@@ -108,7 +105,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col s4">
+				<div class="col s6">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							Election Schedule
@@ -132,8 +129,11 @@
 			</div>
 		</div>
 	</div>
+	<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+        <a href="position.php"class="btn-floating tooltipped btn-large yellow darken-2" data-position="left" data-tooltip="Add New">
+            <i class="large mdi-action-extension"></i>
+        </a>
+    </div>
 </div>
-
-<script src="../assets/js/materialize.min.js"></script> 
 </body>
 </html>

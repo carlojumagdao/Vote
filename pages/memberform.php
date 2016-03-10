@@ -88,7 +88,7 @@
 										<a href="member.php">&emsp; All Members</a>
 									</li>
 									<li>
-										<a href="memberinfo.php">&emsp; Add New</a>
+										<a href="addmember.php">&emsp; Add New</a>
 									</li>
 									<li>
 										<a href="memberform.php" >&emsp; Member Form</a>
@@ -104,10 +104,10 @@
 							<div class="collapsible-body" style="">
 								<ul>
 									<li>
-										<a href="#" >&emsp;All Positions</a>
+										<a href="position.php" >&emsp;All Positions</a>
 									</li>                                         
 									<li>
-										<a href="#">&emsp;Add new</a>
+										<a href="addposition.php">&emsp;Add new</a>
 									</li>
 								</ul>
 							</div>
