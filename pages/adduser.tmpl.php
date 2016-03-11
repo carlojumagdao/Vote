@@ -46,7 +46,7 @@
 							User Profile
 						</div>
 						<div class="panel-body">
-						<form method = "POST" action="" name = "UserForm">
+						<form method = "POST" action="" name = "UserForm" enctype="multipart/form-data">
 							<div class="row">
 								<div class="col s4">
                                     <div class="card-panel2 tooltipped" data-position="top" data-delay="50" data-tooltip="candidate picture">

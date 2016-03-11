@@ -10,7 +10,9 @@ if(fnIsLoggedIn()){
 	require 'navigation.php';
 	require 'connection.php';
 	require '../loaders/php/formLoader.php';
+	require 'upload.php';
 }
+$strError = 0;
 	if (isset($_POST['btnSubmit'])){
 
 		if(empty($_POST['user_fname']) || empty($_POST['user_lname']) || empty($_POST['user_email']) || empty($_POST['user_uname']) || empty($_POST['user_password'])){
@@ -20,32 +22,51 @@ if(fnIsLoggedIn()){
 			 	echo"<script> alert ('Password do not match.') </script>";
 			 	$strError = 1;
 		} else {
-			try{
-				$strUserFName= $_POST['user_fname'];
-				$strUserLName= $_POST['user_lname'];
-				$strUserName= $_POST['user_uname'];
-				$strUserEmail= $_POST['user_email'];
-				$strUserPassword = $_POST['user_password'];
-				$strAccType= $_POST['account_type'];
-				$stmt1 = $conn -> prepare("INSERT INTO tblUser(strUserFname,strUserLname,
-								strUsername,strUserEmail,strPassword,strAccountType) VALUES(:userFname,:userLname,:userUname,:userEmail,:userPassword,:userAccount)");
-				$stmt1->bindParam(':userFname',$strUserFName,PDO::PARAM_STR);
-				$stmt1->bindParam(':userLname',$strUserLName,PDO::PARAM_STR);
-				$stmt1->bindParam(':userUname',$strUserName,PDO::PARAM_STR);
-				$stmt1->bindParam(':userEmail',$strUserEmail,PDO::PARAM_STR);
-				$stmt1->bindParam(':userPassword',$strUserPassword,PDO::PARAM_STR);
-				$stmt1->bindParam(':userAccount',$strAccType,PDO::PARAM_STR);
-				$stmt1->execute();
-			} catch(PDOException $e){
-				echo "<h1>".$e->getMessage()."</h1>";
-				$strError = 1;
+			if(empty($_FILES['pic'])){
+				$strError = 2;
+			} else {
+				$picData = fnUpload('pic');
+				if($picData[0] == 1){
+					$strPicPath = $picData[1];
+				} else {
+					$strPicError = $picData[2];
+					$strError = 1;
+				}
+				try{
+					$strUserFName= $_POST['user_fname'];
+					$strUserLName= $_POST['user_lname'];
+					$strUserName= $_POST['user_uname'];
+					$strUserEmail= $_POST['user_email'];
+					$strUserPassword = $_POST['user_password'];
+					$strAccType= $_POST['account_type'];
+					$stmt1 = $conn -> prepare("INSERT INTO tblUser(strUserFname,strUserLname,
+									strUsername,strUserEmail,strPassword,strAccountType,txtPicPath) VALUES(:userFname,:userLname,:userUname,:userEmail,:userPassword,:picpath,:userAccount)");
+					$stmt1->bindParam(':userFname',$strUserFName,PDO::PARAM_STR);
+					$stmt1->bindParam(':userLname',$strUserLName,PDO::PARAM_STR);
+					$stmt1->bindParam(':userUname',$strUserName,PDO::PARAM_STR);
+					$stmt1->bindParam(':userEmail',$strUserEmail,PDO::PARAM_STR);
+					$stmt1->bindParam(':userPassword',$strUserPassword,PDO::PARAM_STR);
+					$stmt1->bindParam(':picpath',$strPicPath,PDO::PARAM_STR);
+					$stmt1->bindParam(':userAccount',$strAccType,PDO::PARAM_STR);
+					$stmt1->execute();
+				} catch(PDOException $e){
+					echo "<h1>".$e->getMessage()."</h1>";
+					$strError = 1;
+				}
 			}
 		}
-		if(isset($strError)){
-			$strMessage = "Error: Data Not Saved";
-		} else{
-			$strMessage = "Save successful.";
-		}
+		if($strError == 1){    
+	        if(isset($strPicError)){
+	            $strMessage = "Error: Data not Save. ".$strPicError;
+	        } else {
+	            $strMessage = "Error: Data not Save.";
+	            unlink($strPicPath);
+	        }
+	    } else if($strError == 2){
+	        $strMessage = "Error: Candidate id or picture cannot be empty";
+	    } else{
+	        $strMessage = "Data Saved.";
+	    }
 	}
 
 	$formResult = $conn -> query("SELECT * FROM tblUser");

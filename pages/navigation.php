@@ -15,7 +15,7 @@
 						<center>
 							<div>
 								<div class="col s12" >
-									<img style="margin-top: 12%;" src="../assets/img/avatar.jpg" alt="profile" class="circle responsive-img valign profile-image" width="130">
+									<img style="margin-top: 12%;" src="<?='$_SESSION["picpath"]'?>" alt="profile" class="circle responsive-img valign profile-image" width="130">
 								</div>
 								<div class="col s12">
 									<p style="font-size: 14px;color:white">Logged in as:</p>

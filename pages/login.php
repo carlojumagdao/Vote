@@ -24,11 +24,13 @@ if(isset($_POST['btnLogin'])){
 			$fname = $qrUserRow['strUserFname'];
 			$lname = $qrUserRow['strUserLname'];
 			$account = $qrUserRow['strAccountType'];
+			$picpath = $qrUserRow['txtPicPath'];
 		}
 		$_SESSION['id'] = $id;
 		$_SESSION['fname'] = $fname;
 		$_SESSION['lname'] = $lname;
 		$_SESSION['account'] = $account;
+		$_SESSION['picpath'] = $picpath;
 		header("location: index.php");
 	}
 }
