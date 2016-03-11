@@ -40,7 +40,7 @@ $strError = 0;
 					$strUserPassword = $_POST['user_password'];
 					$strAccType= $_POST['account_type'];
 					$stmt1 = $conn -> prepare("INSERT INTO tblUser(strUserFname,strUserLname,
-									strUsername,strUserEmail,strPassword,strAccountType,txtPicPath) VALUES(:userFname,:userLname,:userUname,:userEmail,:userPassword,:picpath,:userAccount)");
+									strUsername,strUserEmail,strPassword,strAccountType,txtPicPath) VALUES(:userFname,:userLname,:userUname,:userEmail,:userPassword,:userAccount,:picpath)");
 					$stmt1->bindParam(':userFname',$strUserFName,PDO::PARAM_STR);
 					$stmt1->bindParam(':userLname',$strUserLName,PDO::PARAM_STR);
 					$stmt1->bindParam(':userUname',$strUserName,PDO::PARAM_STR);
