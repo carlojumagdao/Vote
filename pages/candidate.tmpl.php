@@ -63,7 +63,7 @@
                                                                 <a class="btn-floating waves-effect waves-light light-blue"href="viewmember.php?code=<?=$qrCandRow['strMemberId']?>"><i class="mdi-action-info activator"></i></a>
                                                             </li>
                                                             <li>
-                                                                <a class="btn-floating waves-effect waves-light red darken-3" href="delcandidate.php?code=<?=$qrCandRow['strCandId']?>"><i class="mdi-action-delete"></i></a>
+                                                                <a class="btn-floating waves-effect waves-light red darken-3" href="delcandidate.php?code=<?=$qrCandRow['strCandId']?>&txtPic=<?=$qrCandRow['txtPic']?>"><i class="mdi-action-delete"></i></a>
                                                             </li>   
                                                         </ul>
                                                         <div class="card-action" >

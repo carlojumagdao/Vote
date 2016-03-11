@@ -18,22 +18,13 @@
                     </h3>
                 </div>
                 <div class="col s12">
-                    <?php if(isset($_GET['mes'])){ 
-                        $intMes = $_GET['mes'];
-                        if($intMes == 1){?>
-                            <div class="card-panel white">
-                                <span style="font-weight: bold" class="<?=$strClassName?>">
-                                    Error: Data not saved.
-                                </span>
-                            </div>
-                        <?php } else if($intMes == 2){ ?>
-                            <div class="card-panel white">
-                                <span style="font-weight: bold" class="<?=$strClassName?>">
-                                    Data Saved.
-                                </span>
-                            </div>
-                        <?php }
-                    } ?>
+                    <?php if(isset($strMessage)){ ?>
+                    <div class="card-panel white">
+                        <span style="font-weight: bold" class="<?=$strClassName?>">
+                            <?=$strMessage?>
+                        </span>
+                    </div>
+                    <?php } ?>
                 </div>
                 <div class="col s12">
                     <div class="panel panel-default">

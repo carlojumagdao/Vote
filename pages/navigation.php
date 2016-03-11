@@ -101,6 +101,22 @@
 					</li>
 					<li class="no-padding">
 						<ul class="collapsible" data-collapsible="accordion">
+							<li ><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-description"></i> Survey<i class="material-icons right mdi-navigation-arrow-drop-down"></i></a>
+								<div class="collapsible-body" style="">
+									<ul>
+										<li>
+											<a href="survey.php" >&emsp;All Survey</a>
+										</li>                                         
+										<li>
+											<a href="addsurvey.php">&emsp;Add new</a>
+										</li>
+									</ul>
+								</div>
+							</li>  
+						</ul>
+					</li>
+					<li class="no-padding">
+						<ul class="collapsible" data-collapsible="accordion">
 							<li >
 								<a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-settings"></i> Settings<i class="material-icons right mdi-navigation-arrow-drop-down"></i></a>
 								<div class="collapsible-body" style="">

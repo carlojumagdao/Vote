@@ -41,13 +41,14 @@ if(isset($_POST['btnSaveCand'])){
             $stmt2->execute();
         } catch(PDOException $e){
             $strError = 1;
+            $tae = $e->getMessage();
         }
     }
     if($strError == 1){    
         if(isset($strPicError)){
             $strMessage = "Error: Data not Save. ".$strPicError;
         } else {
-            $strMessage = "Error: Data not Save.";
+            $strMessage = "Error: Data not Save."."-".$tae;
             unlink($strPicPath);
         }
     } else if($strError == 2){
@@ -57,7 +58,7 @@ if(isset($_POST['btnSaveCand'])){
     }
 }
 
-$qrCandidate = $conn -> query("SELECT strCandId FROM tblCandidate WHERE blDelete = 0 ORDER BY strCandId");
+$qrCandidate = $conn -> query("SELECT strCandId FROM tblCandidate ORDER BY strCandId");
 $qrCandRows = $qrCandidate -> fetchAll();
 
 foreach ($qrCandRows as $qrCandRow) {
