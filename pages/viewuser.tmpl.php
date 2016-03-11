@@ -51,11 +51,8 @@
 								<!-- <div> -->
 								
 								<div class="input-field col s12">
-						        	<label for="user-id">User ID<span style="color: red">*</span></label>
-						        	<input type="text" class="validate" name = "user-id" value="<?=$strUserCode?>"/>
-						        </div>
-						        <div class="input-field col s12">
-						        	<label for="user-fname">First Name<span style="color: red">*</span></label>
+						        	<input type="text" class="validate" name = "user-id" hidden value="<?=$strUserCode?>"/>
+						          	<label for="user-fname">First Name<span style="color: red">*</span></label>
 						        	<input type="text" class="validate" name = "user-fname" value = "<?=$strUserFname?>" />
 						        </div>
 						        <div class="input-field col s12">
@@ -70,11 +67,14 @@
 						        	<label for="user-uname">Username<span style="color: red">*</span></label>
 						        	<input type="text" class="validate" name = "user-uname" value = "<?=$strUserUname?>" />
 						        </div>
-						        
+						        <div class="input-field col s12">
+						        	<label for="user-password">Password<span style="color: red">*</span></label>
+						        	<input type="password" class="validate" name = "user-password" value="<?=$strPassword?>"/>
+						        </div>
 						        <div class="input-field col s12">
 									<label for="user-account">Account Type <span style="color: red">*</span></label>
 									<select name="user-account" id="user-account" class="form-control">
-										<option value="<?=$strAccType?>" selected="" disabled><?php echo $strAccType?></option>
+										<option value="<?=$strAccType?>" selected=""><?php echo $strAccType?></option>
 										<option value="Administrator">Administrator</option>
 										<option value="Encoder">Encoder</option>
 									</select>

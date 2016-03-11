@@ -23,6 +23,7 @@ if(isset($_POST['id'])){
     	$strUserLname = $qrUserRow['strUserLname'];
         $strUserUname = $qrUserRow['strUsername'];
         $strUserEmail = $qrUserRow['strUserEmail'];
+        $strPassword = $qrUserRow['strPassword'];
         $strAccType = $qrUserRow['strAccountType'];
     }
 
