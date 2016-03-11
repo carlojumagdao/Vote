@@ -45,7 +45,7 @@
                 <div class="col s12">
                     <?php if(isset($strMessage)){ ?>
                     <div class="card-panel white">
-                        <span style="font-weight: bold" class="<?=$strClassName?>">
+                        <span style="font-weight: bold">
                             <?=$strMessage?>
                         </span>
                     </div>

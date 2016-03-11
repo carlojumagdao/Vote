@@ -116,17 +116,20 @@
 								<div class="collapsible-body" style="">
 									<ul>
 										<li>
-											<a href="passcodeform.php" >&emsp;Passcode Page</a>
+											<a href="editpasscode.php" >&emsp;Passcode Page</a>
 										</li>                                         
 										<li>
-											<a href="votinguser.php">&emsp;Voting Page</a>
+											<a href="editvotingpage.php">&emsp;Voting Page</a>
 										</li> 
 										<li>
-											<a href="securityform.php">&emsp;Security Page</a>
+											<a href="editsecurity.php">&emsp;Security Page</a>
 										</li>
 										<li>
-											<a href="#">&emsp;Campaign Page</a>
-											<a href="#">&emsp;Users Page</a>
+											<a href="editcampaignpage">&emsp;Campaign Page</a>
+											
+										</li>
+                                        <li>
+											<a href="editsecurity.php">&emsp;Security Page</a>
 										</li>
 									</ul>
 								</div>

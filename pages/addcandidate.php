@@ -6,7 +6,7 @@ require 'smartcounter.php';
 require 'upload.php';
 
 $strCandCode = "CAND-000-MN";
-
+$strError = 0;
 
 if(isset($_POST['btnSaveCand'])){
     $path = "tae";
