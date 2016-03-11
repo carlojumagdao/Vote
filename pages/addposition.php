@@ -1,11 +1,17 @@
 <?php
-	require 'banner.php';
+
+require 'function.php';
+session_start();
+
+if(fnIsLoggedIn()){
+    header("location: login.php");
+} else {
+    require 'banner.php';
 	require 'navigation.php';
 	require 'connection.php';
 	require '../loaders/php/PosformLoader.php';
 	require 'smartcounter.php';
-
-
+}
 
 	if(isset($_POST['btnAddPosition'])){
 		$strPositionId = $_POST['pos-id'];
@@ -47,9 +53,9 @@
 			}
 		}
 		if(isset($strError)){
-			// $strMessage = "Error: Data Not Saved";
+			$strMessage = "Error: Data Not Saved";
 		} else{
-			// $strMessage = "Save successful.";
+			$strMessage = "Save successful.";
 		}
 	}
 

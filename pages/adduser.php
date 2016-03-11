@@ -1,9 +1,16 @@
 <?php
-	require 'banner.php';
+
+require 'function.php';
+session_start();
+
+if(fnIsLoggedIn()){
+    header("location: login.php");
+} else {
+    require 'banner.php';
 	require 'navigation.php';
 	require 'connection.php';
 	require '../loaders/php/formLoader.php';
-
+}
 	if (isset($_POST['btnSubmit'])){
 
 		if(empty($_POST['user_fname']) || empty($_POST['user_lname']) || empty($_POST['user_email']) || empty($_POST['user_uname']) || empty($_POST['user_password'])){

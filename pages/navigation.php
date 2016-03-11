@@ -19,7 +19,11 @@
 								</div>
 								<div class="col s12">
 									<p style="font-size: 14px;color:white">Logged in as:</p>
-									<p class="profile-name"style="font-size: 19px;color:white">Carlo Jumagdao</p>
+									<p class="profile-name"style="font-size: 19px;color:white">
+									<?php
+										echo $_SESSION['fname']." ".$_SESSION['lname'];
+									?>
+									</p>
 								</div>
 							</div>
 						</center>

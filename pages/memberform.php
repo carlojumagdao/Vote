@@ -1,8 +1,10 @@
 <?php
-// Created at: Sublime Text 3
-// Writer: Carlo Jumagdao
-// Date: February 22, 2016
-// Time: 4:14am
+require 'function.php';
+session_start();
+
+if(fnIsLoggedIn()){
+    header("location: login.php");
+}
 ?>
 <!DOCTYPE html>
 <html>

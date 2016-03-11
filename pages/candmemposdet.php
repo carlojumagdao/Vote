@@ -5,10 +5,10 @@ $blMatch = true;
 $intMemFieldCount = 0;
 $intPosFieldCount = 0;
 $intMatch = 0;
-$arrPosFieldName = array(' ');
-$arrPosFieldData = array(' ');
-$arrFieldName = array(' ');
-$arrFieldData = array(' ');
+$arrPosFieldName = array();
+$arrPosFieldData = array();
+$arrFieldName = array();
+$arrFieldData = array();
 
 if(isset($_POST['memberid']) && isset($_POST['posid'])){
     $strMemCode = $_POST['memberid'];
@@ -120,11 +120,14 @@ if(isset($_POST['memberid']) && isset($_POST['posid'])){
 <div class="col s12">
     <div class="card-panel white">
         <span style="font-weight: bold">
-            <?php   
-                if($intMatch == $intPosFieldCount){
+            <?php  
+                if($intPosFieldCount == 0){
+                    echo "<i class='mdi-navigation-check' style='color:blue;'></i> No Position requirement .  ";
+                    echo "<input type='submit' class='btn btn-primary' name='btnSaveCand' value='Save'>";
+                }else if($intMatch == $intPosFieldCount){
                     echo "<i class='mdi-navigation-check' style='color:blue;'></i> Position requirement satisfied.  ";
                     echo "<input type='submit' class='btn btn-primary' name='btnSaveCand' value='Save'>";
-                } else {
+                }else {
                     echo "<i class='mdi-navigation-close' style='color:red;'></i> Position requirement not satisfied, this member cannot be a candidate for this position. ";
                     echo "<input type='submit' class='btn btn-danger' name='btnSaveCand' value='Overrule and Save'>";
                 }

@@ -1,5 +1,13 @@
 <?php
-require '../pages/connection.php';
+require 'function.php';
+session_start();
+
+if(fnIsLoggedIn()){
+    header("location: login.php");
+} else {
+    require 'connection.php';
+}
+
 
 if(isset($_POST['btnEditPosition'])){
 

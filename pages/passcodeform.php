@@ -1,3 +1,12 @@
+<?php
+require 'function.php';
+session_start();
+
+if(fnIsLoggedIn()){
+    header("location: login.php");
+} 
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +36,7 @@
                             <div class="input-field col s6 tooltipped " data-position="top" data-delay="50" data-tooltip="type your given passcode here" style="margin-bottom:20px;margin-left:120px">
                                 <i class="material-icons prefix ">lock_open</i>
                               <input id="passcode" type="text" length="6" style="font-size:35px;">
-                              <label for="passcode"  >Passcode</label>
+                              <label for="passcode">Passcode</label>
                             </div>
                            
                             <div class="row" >
