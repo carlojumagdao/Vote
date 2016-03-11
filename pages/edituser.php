@@ -14,6 +14,7 @@ if(isset($_POST['btnEditUser'])){
 	$strUsername = $_POST['user-uname'];
 	$strUserEmail = $_POST['user-email'];
 	$strAccType = $_POST['user-account'];
+	$strPass = $_POST['user-password'];
 
 	if(empty($intUserId) || empty($strUserFname) || empty($strUserLname) || empty($strUsername) || empty($strUserEmail)
 		|| empty($strAccType)){
@@ -26,15 +27,18 @@ if(isset($_POST['btnEditUser'])){
 		$strUsername = $_POST['user-uname'];
 		$strUserEmail = $_POST['user-email'];
 		$strAccType = $_POST['user-account'];
+		$strPass = $_POST['user-password'];	
 
 		$conn->beginTransaction();
 		try{
-			$stmt2 = $conn -> prepare("UPDATE tblUser SET strUserFname=:userfname, strUserLname=:userlname, strUsername=:useruname, strUserEmail=:useremail, strAccountType=:useraccount WHERE intUserId = :userid");
+			$stmt2 = $conn -> prepare("UPDATE tblUser SET strUserFname=:userfname, strUserLname=:userlname, strUsername=:useruname, 
+											strUserEmail=:useremail, strAccountType=:useraccount, strPassword=:userpassword WHERE intUserId = :userid");
 			$stmt2->bindParam(':userfname',$strUserFname,PDO::PARAM_STR);
 			$stmt2->bindParam(':userlname',$strUserLname,PDO::PARAM_STR);
 			$stmt2->bindParam(':useruname',$strUsername,PDO::PARAM_STR);
 			$stmt2->bindParam(':useremail',$strUserEmail,PDO::PARAM_STR);
 			$stmt2->bindParam(':useraccount',$strAccType,PDO::PARAM_STR);
+			$stmt2->bindParam(':userpassword',$strPass,PDO::PARAM_STR);
 			$stmt2->bindParam(':userid',$intUserId,PDO::PARAM_INT);
 			$stmt2->execute();
 
