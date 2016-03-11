@@ -29,7 +29,7 @@
 						</center>
 					</div>
 					<li>
-						<a  href="election.php" class="collapsible-header waves-effect waves-cyan" style="right:15px;"><i class="material-icons  mdi-action-dashboard">
+						<a  href="dashboard.php" class="collapsible-header waves-effect waves-cyan" style="right:15px;"><i class="material-icons  mdi-action-dashboard">
 						</i> Dashboard</a>
 					</li>
 					<li class="no-padding">

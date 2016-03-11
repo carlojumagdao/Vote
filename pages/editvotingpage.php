@@ -1,3 +1,22 @@
+<?php
+
+require 'function.php';
+session_start();
+
+if(fnIsLoggedIn()){
+    header("location: login.php");
+}
+
+if(isset($_POST['btnSave'])){
+
+    $HCP= $_POST['head_Color_pass'];
+    $BCP= $_POST['back_Color_pass'];
+    $THP= $_POST['title_head_pass'];
+    $WMP= $_POST['wel_mess_pass'];
+}
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
