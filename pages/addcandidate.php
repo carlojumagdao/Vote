@@ -14,10 +14,6 @@ if(fnIsLoggedIn()){
 
 $strCandCode = "CAND-000-MN";
 $strError = 0;
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
 
 if(isset($_POST['btnSaveCand'])){
 

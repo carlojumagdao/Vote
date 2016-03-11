@@ -1,19 +1,35 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Vote+ Create Form</title>
-    <?php
-require 'banner.php';
-require 'navigation.php';
-require 'connection.php';
-require 'smartcounter.php';
+<?php
+
+require 'function.php';
+session_start();
+
+if(fnIsLoggedIn()){
+    header("location: login.php");
+}else{
+    require 'banner.php';
+    require 'navigation.php';
+    require 'connection.php';
+    require 'smartcounter.php';
+}
+
+
+if(isset($_POST['btnSave'])){
+
+    $HCP= $_POST['head_Color_pass'];
+    $BCP= $_POST['back_Color_pass'];
+    $THP= $_POST['title_head_pass'];
+    $WMP= $_POST['wel_mess_pass'];
+}
 
 
 ?>
  
-   
- <link rel="stylesheet" href="../assets/css/spectrum.css" />
-	
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Vote+ Create Form</title>
+<link rel="stylesheet" href="../assets/css/spectrum.css" />	
 </head>
 <style>
     select {
@@ -25,14 +41,6 @@ require 'smartcounter.php';
     .collection a.collection-item:not(.active):hover {
         background-color: #f5c012;
     }
-  
-    /*
- * COLOR PICKER TOOL
- */
-
-
-
-
 </style>
 <body>   
 
@@ -247,19 +255,5 @@ require 'smartcounter.php';
         $('.tooltipped').tooltipped({delay: 50});
     });
 </script>
-        
-
 </body>
 </html>
- <?php
-    if(isset($_POST['btnSave']))
-             {
-                $HCP= $_POST['head_Color_pass'];
-                $BCP= $_POST['back_Color_pass'];
-                $THP= $_POST['title_head_pass'];
-                $WMP= $_POST['wel_mess_pass'];
-        echo "<h1>$HCP</h1>";
-             }
-
-
-?>
