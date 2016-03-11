@@ -1,9 +1,14 @@
 <?php
 
-// require 'navigation.php';
-// require 'banner.php';
-require 'connection.php';
-require '../loaders/php/editformLoader.php';
+require 'function.php';
+session_start();
+
+if(fnIsLoggedIn()){
+    header("location: login.php");
+} else {
+    require 'connection.php';
+    require '../loaders/php/editformLoader.php';
+}
 
 
 $arrFieldName= array (' ');

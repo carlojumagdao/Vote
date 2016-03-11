@@ -1,7 +1,14 @@
 <?php
+require 'function.php';
+session_start();
 
-require 'connection.php';
-require '../loaders/php/editPosformLoader.php';
+if(fnIsLoggedIn()){
+    header("location: login.php");
+} else {
+    require 'connection.php';
+    require '../loaders/php/editPosformLoader.php';
+
+}
 
 
 $formResult = $conn -> query("SELECT * FROM tblUser");
@@ -23,6 +30,7 @@ if(isset($_POST['id'])){
     	$strUserLname = $qrUserRow['strUserLname'];
         $strUserUname = $qrUserRow['strUsername'];
         $strUserEmail = $qrUserRow['strUserEmail'];
+        $strPassword = $qrUserRow['strPassword'];
         $strAccType = $qrUserRow['strAccountType'];
     }
 

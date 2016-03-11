@@ -46,16 +46,35 @@
 							User Profile
 						</div>
 						<div class="panel-body">
-						<form method = "POST" action="" name = "UserForm">
+						<form method = "POST" action="" name = "UserForm" enctype="multipart/form-data">
 							<div class="row">
-								<div>
+								<div class="col s4">
+                                    <div class="card-panel2 tooltipped" data-position="top" data-delay="50" data-tooltip="candidate picture">
+                                        <img id="cand-pic" src="../assets/img/Avatar.jpg" width="180px" /> 
+                                    </div>
+                                </div>
+
+								<div class="col s8">
 									<label class="control-label">First Name <span style="color: red">*</span></label>
 									<input type="text" name="user_fname" id="user_fname" class="validate">
 								</div>	
-								<div>
+								<div class="col s8">
 									<label class="control-label">Last Name <span style="color: red">*</span></label>
 									<input type="text" name="user_lname" id="user_lname" class="validate">
-								</div>	
+								</div>
+								<div class="row">
+                                <div class="col s12">
+                                    <div class="file-field input-field">
+                                        <div class="btn waves-effect waves-black tooltipped yellow darken-2 grey-text text-darken-4 " data-position="top" data-delay="50" data-tooltip="choose file">
+                                            <span>File</span>
+                                            <input name = "pic" type="file" onchange="readURL(this);">
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path validate yellow-text text-darken-2" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>	
 								<div>
 									<label for = "user_email" data-error="" data-success="">Email <span style="color: red">*</span></label>
 									<input type="email" name="user_email" id="user_email" class="validate">
@@ -139,6 +158,20 @@
 <script src="../assets/js/jquery/dist/jquery.js"></script>
 <script src="../assets/js/jquery/jquery-ui.min.js"></script>
 <script src="../assets/js/materialize.min.js"></script> 
+<script> 
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#cand-pic')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(150);
+                };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 <script>
    function fnValidate(obj, pass, strdivname){
        var confirm = obj.value;

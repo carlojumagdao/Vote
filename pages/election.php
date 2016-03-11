@@ -1,7 +1,16 @@
 <?php
-	require 'banner.php';
+
+require 'function.php';
+session_start();
+
+if(fnIsLoggedIn()){
+    header("location: login.php");
+} else {
+    require 'banner.php';
 	require 'navigation.php';
 	require 'connection.php';
+}
+
 
 
 	$strElecName = "";

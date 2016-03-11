@@ -1,5 +1,15 @@
 <?php
-require '../pages/connection.php';
+
+require 'function.php';
+session_start();
+
+if(fnIsLoggedIn()){
+    header("location: login.php");
+} else {
+    require '../pages/connection.php';
+}
+
+
 
 if(empty($_POST['member_id']) || empty($_POST['last_name']) || empty($_POST['email']) || empty($_POST['first_name'])){
 	$strError = 1;

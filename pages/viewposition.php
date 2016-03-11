@@ -1,7 +1,13 @@
 <?php
+require 'function.php';
+session_start();
 
-require 'connection.php';
-require '../loaders/php/editPosformLoader.php';
+if(fnIsLoggedIn()){
+    header("location: login.php");
+} else {
+    require 'connection.php';
+    require '../loaders/php/editPosformLoader.php';
+}
 
 
 $arrFieldName= array (' ');
