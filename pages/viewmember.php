@@ -14,10 +14,17 @@ if(fnIsLoggedIn()){
 $arrFieldName= array (' ');
 $arrFieldData= array (' ');
 
+if(isset($_GET['code'])){
+    require 'navigation.php';
+    require 'banner.php';
+    $strMemCode = $_GET['code'];
+}
 if(isset($_POST['id'])){
+    $strMemCode = $_POST['id'];
+}
 
-	$strMemCode = $_POST['id'];
-	
+if(isset($_POST['id']) || isset($_GET['code'])){
+
 	$stmt = $conn -> prepare('SELECT * FROM tblMember WHERE strMemberId = :MemCode');
     $stmt->bindParam(':MemCode', $strMemCode, PDO::PARAM_STR);
     $stmt->execute();
@@ -94,7 +101,6 @@ if(isset($_POST['id'])){
 		$data = $form['strMemForm'];
 	}
 	$loader = new formLoader($data,'editmember.php',$strMemCode,$strMemFname,$strMemMname,$strMemLname,$strMemEmail,$arrFieldName,$arrFieldData);
-	//yung submit.php ay yung action sa form
 }
     require 'viewmember.tmpl.php';
 ?>

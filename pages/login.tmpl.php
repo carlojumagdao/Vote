@@ -51,6 +51,15 @@
             <div class="card-panel" style="width: 35%;padding-top: 3%">
                 <img src="../assets/img/logo.png" width="180px">
                 <p class="black-text">Membership Monitoring and Election Content Management System</p>
+                <div class="col s12">
+                    <?php if(isset($strMessage)){ ?>
+                    <div class="card-panel white">
+                        <span style="font-weight: bold" class="<?=$strClassName?>">
+                            <?=$strMessage?>
+                        </span>
+                    </div>
+                    <?php } ?>
+                </div>
                 <form method="POST" action="login.php">
                 <div class="row margin" style="padding-top: 2%">
                     <div class="input-field">

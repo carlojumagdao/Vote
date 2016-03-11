@@ -81,7 +81,7 @@
                                                     echo "<td>$strMemEmail</td>";
                                                     ?>
                                                     <td>
-                                                    <button type="button" class="btn-floating tooltipped btn-small waves-effect waves-light blue view" onclick="rowFunction()" data-position="top" data-tooltip="Edit"><i class="small mdi-content-create"></i></button>
+                                                    <button type="button" class="btn-floating tooltipped btn-small waves-effect waves-light blue view" onclick="rowFunction()" data-position="top" data-tooltip="Edit"><i class="small mdi-content-create" id="view"></i></button>
                                                     <a href="#modal1" class="btn-floating tooltipped btn-small waves-effect waves-light red btn modal-trigger del-rec" data-position="right" data-tooltip="Delete"><i class="small mdi-action-delete" ></i></a>
                                                 </td>
                                                 <?php

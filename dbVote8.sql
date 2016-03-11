@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `dbVote+` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `dbVote+`;
 -- MySQL dump 10.13  Distrib 5.6.24, for osx10.8 (x86_64)
 --
 -- Host: 127.0.0.1    Database: dbVote+
@@ -60,7 +58,10 @@ CREATE TABLE `tblCandidate` (
   `strCandId` varchar(45) NOT NULL,
   `strCandMemId` varchar(45) NOT NULL,
   `strCandPosId` varchar(45) NOT NULL,
-  PRIMARY KEY (`strCandId`),
+  `txtPic` tinytext NOT NULL,
+  `blDelete` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`strCandMemId`,`strCandPosId`),
+  UNIQUE KEY `strCandId_UNIQUE` (`strCandId`),
   KEY `fkCandMem_idx` (`strCandMemId`),
   KEY `fkCandPos_idx` (`strCandPosId`),
   CONSTRAINT `fkCandMem` FOREIGN KEY (`strCandMemId`) REFERENCES `tblMember` (`strMemberId`) ON UPDATE CASCADE,
@@ -74,6 +75,7 @@ CREATE TABLE `tblCandidate` (
 
 LOCK TABLES `tblCandidate` WRITE;
 /*!40000 ALTER TABLE `tblCandidate` DISABLE KEYS */;
+INSERT INTO `tblCandidate` VALUES ('CAND-001-MN','CODE010','CODE001','../assets/img/uploads/cj-obligacion.jpg',0),('CAND-002-MN','CODE011','CODE001','../assets/img/uploads/balanga.png',0),('CAND-003-MN','CODE012','CODE005','../assets/img/uploads/arvin.jpg',0);
 /*!40000 ALTER TABLE `tblCandidate` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -159,7 +161,7 @@ CREATE TABLE `tblMember` (
 
 LOCK TABLES `tblMember` WRITE;
 /*!40000 ALTER TABLE `tblMember` DISABLE KEYS */;
-INSERT INTO `tblMember` VALUES ('CODE001','O\'haro','O@#$','O\'neal','vingresola@yahoo.com',0,NULL,'hkzGejOE',NULL,0),('CODE002','Geneva','Ordy','Cruz','vingresola@yahoo.com',0,NULL,'wZQf9AWt',NULL,1),('CODE003','O\'hara','O\'may Gali','A\'baya','yup@yaoo.com',0,NULL,'IEz5ACZa',NULL,1),('CODE0034','Melody','','H\'aynako','melods@gmail.com',0,NULL,'rApwZoHk',NULL,1),('CODE004','Jejejeje','O\'neal','O\'owtidi','o\'neal@yahoo.com',0,NULL,'0sC9JeBW',NULL,1),('CODE005','Carlo','Labrague','O\'haro','carlojumagdao@gmail.com',0,NULL,'JsDFX0Ql',NULL,1),('CODE006','Jebs','Jeb\'s','lalo','jes@yahoo.com',0,NULL,'HiUYZA4L',NULL,1),('CODE007','Angelina','Pitt','Jolie','Ange@yahoo.com',0,NULL,'nI64O90H',NULL,0),('CODE008','Gabriel','Labrague','Jumagdao','gab@gmail.com',0,NULL,'R8mHBkl0',NULL,0),('CODE009','Dionisio','Labrague','Jumagdao','dioni@yahoo.com',0,NULL,'rQwkbUGq',NULL,0);
+INSERT INTO `tblMember` VALUES ('CODE001','O\'haro','O@#$','O\'neal','vingresola@yahoo.com',0,NULL,'hkzGejOE',NULL,0),('CODE002','Geneva','Ordy','Cruz','vingresola@yahoo.com',0,NULL,'wZQf9AWt',NULL,1),('CODE003','O\'hara','O\'may Gali','A\'baya','yup@yaoo.com',0,NULL,'IEz5ACZa',NULL,1),('CODE0034','Melody','','H\'aynako','melods@gmail.com',0,NULL,'rApwZoHk',NULL,1),('CODE004','Jejejeje','O\'neal','O\'owtidi','o\'neal@yahoo.com',0,NULL,'0sC9JeBW',NULL,1),('CODE005','Carlo','Labrague','O\'haro','carlojumagdao@gmail.com',0,NULL,'JsDFX0Ql',NULL,1),('CODE006','Jebs','Jeb\'s','lalo','jes@yahoo.com',0,NULL,'HiUYZA4L',NULL,1),('CODE007','Angelina','Pitt','Jolie','Ange@yahoo.com',0,NULL,'nI64O90H',NULL,0),('CODE008','Gabriel','Labrague','Jumagdao','gab@gmail.com',0,NULL,'R8mHBkl0',NULL,0),('CODE009','Dionisio','Labrague','Jumagdao','dioni@yahoo.com',0,NULL,'rQwkbUGq',NULL,0),('CODE010','AJ','Jeje','Rojoa','aj@yahoo.com',0,NULL,'xVHfBU6Q',NULL,0),('CODE011','Jeremy','lala','Linn','je@yahoo.com',0,NULL,'bErv2Aax',NULL,0),('CODE012','Arvin','Niebla','Gresola','arvin@yahoo.com',0,NULL,'GArzoi2T',NULL,0);
 /*!40000 ALTER TABLE `tblMember` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -181,7 +183,7 @@ CREATE TABLE `tblMemberDetail` (
   KEY `fkMemDeFieldName_idx1` (`strMemDeFieldName`),
   CONSTRAINT `fkMemDeMem` FOREIGN KEY (`strMemDeMemId`) REFERENCES `tblMember` (`strMemberId`) ON UPDATE CASCADE,
   CONSTRAINT `fkMemDeMemFieldName` FOREIGN KEY (`strMemDeFieldName`) REFERENCES `tblDynamicField` (`strDynFieldName`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=240 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=247 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -190,7 +192,7 @@ CREATE TABLE `tblMemberDetail` (
 
 LOCK TABLES `tblMemberDetail` WRITE;
 /*!40000 ALTER TABLE `tblMemberDetail` DISABLE KEYS */;
-INSERT INTO `tblMemberDetail` VALUES (83,'CODE001','location','Visayas'),(82,'CODE001','untitled','Second Choice'),(217,'CODE003','civil_status','Single'),(219,'CODE003','location','Visayas'),(220,'CODE003','number','41'),(218,'CODE003','untitled','Second Choice'),(193,'CODE0034','civil_status','Single'),(195,'CODE0034','location','Mindanao'),(196,'CODE0034','number','12'),(194,'CODE0034','untitled','Third Choice'),(189,'CODE004','civil_status','Married'),(191,'CODE004','location','Visayas'),(192,'CODE004','number','12'),(190,'CODE004','untitled','Second Choice'),(205,'CODE005','civil_status','Married'),(207,'CODE005','location','Mindanao'),(208,'CODE005','number','100'),(206,'CODE005','untitled','Second Choice'),(209,'CODE006','civil_status','Married'),(211,'CODE006','location','Visayas'),(212,'CODE006','number','14'),(210,'CODE006','untitled','Second Choice'),(221,'CODE007','number',''),(232,'CODE008','civil_status','Married'),(234,'CODE008','location','Mindanao'),(235,'CODE008','number','12'),(233,'CODE008','untitled','Second Choice'),(236,'CODE009','civil_status','Married'),(238,'CODE009','location','Visayas'),(239,'CODE009','number','19'),(237,'CODE009','untitled','Third Choice');
+INSERT INTO `tblMemberDetail` VALUES (83,'CODE001','location','Visayas'),(82,'CODE001','untitled','Second Choice'),(217,'CODE003','civil_status','Single'),(219,'CODE003','location','Visayas'),(220,'CODE003','number','41'),(218,'CODE003','untitled','Second Choice'),(193,'CODE0034','civil_status','Single'),(195,'CODE0034','location','Mindanao'),(196,'CODE0034','number','12'),(194,'CODE0034','untitled','Third Choice'),(189,'CODE004','civil_status','Married'),(191,'CODE004','location','Visayas'),(192,'CODE004','number','12'),(190,'CODE004','untitled','Second Choice'),(205,'CODE005','civil_status','Married'),(207,'CODE005','location','Mindanao'),(208,'CODE005','number','100'),(206,'CODE005','untitled','Second Choice'),(209,'CODE006','civil_status','Married'),(211,'CODE006','location','Visayas'),(212,'CODE006','number','14'),(210,'CODE006','untitled','Second Choice'),(221,'CODE007','number',''),(232,'CODE008','civil_status','Married'),(234,'CODE008','location','Mindanao'),(235,'CODE008','number','12'),(233,'CODE008','untitled','Second Choice'),(236,'CODE009','civil_status','Married'),(238,'CODE009','location','Visayas'),(239,'CODE009','number','19'),(237,'CODE009','untitled','Third Choice'),(241,'CODE010','civil_status','Single'),(240,'CODE010','location','Luzon'),(242,'CODE010','untitled','Third Choice'),(243,'CODE011','location','Luzon'),(245,'CODE012','civil_status','Single'),(244,'CODE012','location','Luzon'),(246,'CODE012','untitled','Second Choice');
 /*!40000 ALTER TABLE `tblMemberDetail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -229,9 +231,9 @@ CREATE TABLE `tblPosition` (
   `strPositionId` varchar(45) NOT NULL,
   `strPosName` varchar(45) NOT NULL,
   `intPosVoteLimit` int(11) NOT NULL,
-  `blDelete` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`strPositionId`),
-  UNIQUE KEY `strPosName_UNIQUE` (`strPosName`)
+  `blDelete` tinyint(1) NOT NULL,
+  PRIMARY KEY (`strPosName`,`blDelete`),
+  UNIQUE KEY `strPositionId_UNIQUE` (`strPositionId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -241,7 +243,7 @@ CREATE TABLE `tblPosition` (
 
 LOCK TABLES `tblPosition` WRITE;
 /*!40000 ALTER TABLE `tblPosition` DISABLE KEYS */;
-INSERT INTO `tblPosition` VALUES ('CODE001','President',1,0),('CODE002','South Luzon Vice President',2,1),('CODE003','Secretary of foreign affairs',3,0),('CODE004','Auditor',2,0),('CODE005','Vice President for Luzon',1,0),('POS-001-CODE','Vice President for Visayas',1,0);
+INSERT INTO `tblPosition` VALUES ('CODE004','Auditor',2,0),('POS-003-CODE','Escort',1,0),('CODE001','President',1,0),('CODE003','Secretary of foreign affairs',3,0),('POS-002-CODE','South Luzon Vice President',1,0),('CODE002','South Luzon Vice President',2,1),('CODE005','Vice President for Luzon',1,0),('POS-001-CODE','Vice President for Visayas',1,0);
 /*!40000 ALTER TABLE `tblPosition` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -411,10 +413,12 @@ CREATE TABLE `tblUser` (
   `strUserFname` varchar(45) DEFAULT NULL,
   `strUserLname` varchar(45) DEFAULT NULL,
   `strAccountType` varchar(45) NOT NULL,
+  `blDelete` tinyint(1) NOT NULL DEFAULT '0',
+  `txtPicPath` tinytext,
   PRIMARY KEY (`intUserId`),
   UNIQUE KEY `strUsername_UNIQUE` (`strUsername`),
   UNIQUE KEY `strUserEmail_UNIQUE` (`strUserEmail`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -423,7 +427,7 @@ CREATE TABLE `tblUser` (
 
 LOCK TABLES `tblUser` WRITE;
 /*!40000 ALTER TABLE `tblUser` DISABLE KEYS */;
-INSERT INTO `tblUser` VALUES (1,'carlojumagdao','12345','carlojumgdao@gmail.com','Carlo','Jumagdao','Administrator');
+INSERT INTO `tblUser` VALUES (1,'carlojumagdao','12345','carlojumgdao@gmail.com','Carlo','Jumagdao','Administrator',0,NULL),(2,'wendellclarete','123456789','wendogs@yahoo.com','Wendell','Clarete','Administrator',0,NULL),(4,'melodylegaspi','moimoi','melody@yahoo.com','Melody','Legaspi','Encoder',0,'../assets/img/uploads/tumblr_lkzyc3vNuh1qk266vo1_500.jpg'),(5,'Arvin','jessa','arvin@yahoo.com','Arvin','Gresola','Administrator',0,'../assets/img/uploads/arvinbagito.jpg');
 /*!40000 ALTER TABLE `tblUser` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -464,4 +468,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-10 21:06:20
+-- Dump completed on 2016-03-11 20:31:05

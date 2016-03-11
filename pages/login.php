@@ -11,7 +11,7 @@ if(isset($_POST['btnLogin'])){
 	$strUsername = $_POST['username'];
 	$strPassword = $_POST['password'];
 
-	$qrUser = $conn -> prepare("SELECT * FROM tblUser WHERE strUsername = :username && strPassword = :password && blDelete = 0");
+	$qrUser = $conn -> prepare("SELECT * FROM tblUser WHERE strUsername = :username && strPassword = md5(:password) && blDelete = 0");
 	$qrUser->bindParam(':username',$strUsername,PDO::PARAM_STR);
 	$qrUser->bindParam(':password',$strPassword,PDO::PARAM_STR);
 	$qrUser->execute();
@@ -33,6 +33,8 @@ if(isset($_POST['btnLogin'])){
 		$_SESSION['account'] = $account;
 		
 		header("location: index.php");
+	} else{
+		$strMessage = "Authentication Failed.";
 	}
 }
 require 'login.tmpl.php';

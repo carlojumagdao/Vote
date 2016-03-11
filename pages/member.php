@@ -10,6 +10,9 @@ if(fnIsLoggedIn()){
     require '../pages/connection.php';
 }
 
+	if(isset($_GET['code'])){
+	    $getmemid = $_GET['code'];
+	}
 
     $qrDynFields = $conn -> query("SELECT strDynFieldName FROM tblDynamicField WHERE blDynStatus = 1 ORDER BY strDynFieldName");
     $qrDynFieldsRows = $qrDynFields -> fetchAll();

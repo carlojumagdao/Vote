@@ -10,7 +10,6 @@ if(fnIsLoggedIn()){
 
 }
 
-
 $formResult = $conn -> query("SELECT * FROM tblUser");
 $formData = $formResult -> fetchAll();
 foreach ($formData as $form) {

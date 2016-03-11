@@ -142,6 +142,12 @@
     	</div>
 	</div>
 </div>
-<!-- <script src="../assets/js/materialize.min.js"></script>  -->
+<?php
+	if(isset($_GET['code'])){
+		?>
+		<script src="../assets/js/materialize.min.js"></script> 
+		<?php
+	}
+?>
 </body>
 </html>
