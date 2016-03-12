@@ -27,14 +27,7 @@ if(isset($_POST['btnSave'])){
 <html>
 <head>
 <title>Vote+ Create Form</title>
-    <?php
-require 'banner.php';
-require 'navigation.php';
-require 'connection.php';
-require 'smartcounter.php';
 
-
-?>
  
    
  <link rel="stylesheet" href="../assets/css/spectrum.css" />

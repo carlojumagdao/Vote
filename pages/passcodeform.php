@@ -1,3 +1,4 @@
+
 <?php
 require 'function.php';
 session_start();
@@ -5,7 +6,19 @@ session_start();
 if(fnIsLoggedIn()){
     header("location: login.php");
 } 
+
+if(isset($_GET['head'])){
+    $headcolor = $_GET['head'];
+}
+if(isset($_GET['background'])){
+    $backcolor = $_GET['background'];
+}
+
 ?>
+
+
+
+ 
 
 <!DOCTYPE html>
 <html>
@@ -16,8 +29,17 @@ if(fnIsLoggedIn()){
     <link rel="stylesheet" href="../assets/css/styles/materialize.min2.css" media="screen,projection">
     <link rel="stylesheet" href="../assets/css/styles/style3.css">
 </head>
-<body style="background-image:url(../assets/img/glass3.jpg)"> 
+<body style=""> 
 <header>
+    
+<style>
+    nav{
+        background-color: <?php echo $headcolor;  ?>;
+    }
+    body{
+        background-color: <?php echo $backcolor;  ?>;
+    }
+</style>
     <nav>
         <div class="nav-wrapper banner">
             <a href="#" class="brand-logo"><img src="../assets/img/vote++ web logo.png" width="160" height="40"> </a>   

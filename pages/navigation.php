@@ -145,11 +145,11 @@
 											<a href="editsecurity.php">&emsp;Security Page</a>
 										</li>
 										<li>
-											<a href="editcampaignpage">&emsp;Campaign Page</a>
+											<a href="editcampaignpage.php">&emsp;Campaign Page</a>
 											
 										</li>
                                         <li>
-											<a href="editsecurity.php">&emsp;Security Page</a>
+											<a href="edituserpage.php">&emsp;User Page</a>
 										</li>
 									</ul>
 								</div>

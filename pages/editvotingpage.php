@@ -5,7 +5,14 @@ session_start();
 
 if(fnIsLoggedIn()){
     header("location: login.php");
+}else{
+
+    require 'connection.php';
+    require 'smartcounter.php';
+    require 'banner.php';
+    require 'navigation.php';
 }
+
 
 if(isset($_POST['btnSave'])){
 
@@ -13,6 +20,7 @@ if(isset($_POST['btnSave'])){
     $BCP= $_POST['back_Color_pass'];
     $THP= $_POST['title_head_pass'];
     $WMP= $_POST['wel_mess_pass'];
+    echo("<script>location.href = 'passcodeform.php?head=$HCP&background=$BCP';</script>");
 }
 
 
@@ -21,15 +29,7 @@ if(isset($_POST['btnSave'])){
 <html>
 <head>
 <title>Vote+ Create Form</title>
-    <?php
-require 'banner.php';
-require 'navigation.php';
-require 'connection.php';
-require 'smartcounter.php';
-
-
-?>
- 
+    
    
  <link rel="stylesheet" href="../assets/css/spectrum.css" />
 	

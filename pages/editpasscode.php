@@ -6,10 +6,11 @@ session_start();
 if(fnIsLoggedIn()){
     header("location: login.php");
 }else{
-    require 'banner.php';
-    require 'navigation.php';
+
     require 'connection.php';
     require 'smartcounter.php';
+        require 'banner.php';
+    require 'navigation.php';
 }
 
 
@@ -19,11 +20,15 @@ if(isset($_POST['btnSave'])){
     $BCP= $_POST['back_Color_pass'];
     $THP= $_POST['title_head_pass'];
     $WMP= $_POST['wel_mess_pass'];
+    echo("<script>location.href = 'passcodeform.php?head=$HCP&background=$BCP';</script>");
+    
+   
 }
 
 
 ?>
  
+
 
 <!DOCTYPE html>
 <html>
@@ -189,40 +194,7 @@ if(isset($_POST['btnSave'])){
         }
     }
 </script>
-<script>
-    $("#preferredName").spectrum({
-    preferredFormat: "name",
-    showInput: true,
-    
-});
-</script>
-<script>
-    $("#picker").spectrum({
-    color: tinycolor,
-    flat: bool,
-    showInput: bool,
-    showInitial: bool,
-    allowEmpty: bool,
-    showAlpha: bool,
-    disabled: bool,
-    localStorageKey: string,
-    showPalette: bool,
-    showPaletteOnly: bool,
-    togglePaletteOnly: bool,
-    showSelectionPalette: bool,
-    clickoutFiresChange: bool,
-    cancelText: string,
-    chooseText: string,
-    togglePaletteMoreText: string,
-    togglePaletteLessText: string,
-    containerClassName: string,
-    replacerClassName: string,
-    preferredFormat: string,
-    maxSelectionSize: int,
-    palette: [[string]],
-    selectionPalette: [string]
-});
-</script>
+
 <script>
     $("#showAlpha").spectrum({
     showAlpha: true,
@@ -230,7 +202,7 @@ if(isset($_POST['btnSave'])){
     showInput: true,
     showPalette: true,
     showPaletteOnly: true,
-    togglePaletteOnly: true,
+   togglePaletteOnly: true,
     togglePaletteMoreText: 'more',
     togglePaletteLessText: 'less',
     color: "#f5c012",
@@ -239,11 +211,10 @@ if(isset($_POST['btnSave'])){
 <script>
     $("#showAlpha2").spectrum({
     showAlpha: true,
-    preferredFormat: "name",
+    preferredFormat: "",
     showInput: true,
     showPalette: true,
-    showPaletteOnly: true,
-    togglePaletteOnly: true,
+    showPaletteOnly: true,togglePaletteOnly: true,
     togglePaletteMoreText: 'more',
     togglePaletteLessText: 'less',
     color: "#37474f",
